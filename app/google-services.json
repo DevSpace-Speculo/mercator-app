@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "529306745786",
+    "project_id": "mercator-9ff70",
+    "storage_bucket": "mercator-9ff70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529306745786:android:ae935f218e5673987d3b83",
+        "android_client_info": {
+          "package_name": "com.speculo.mercator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529306745786-n0pt1lankt5astulk28n2mcjl4e20kbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE17DF_ePTWh801CnG2HxFzc5M63QFUmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529306745786-n0pt1lankt5astulk28n2mcjl4e20kbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
