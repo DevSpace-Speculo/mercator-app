@@ -37,11 +37,6 @@ public class MainFragment extends Fragment {
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_1, new HomeFragment()).commit();
                     }
                     break;
-            case R.id.nav_request:
-                    if (!getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container_1).getClass().getSimpleName().equals("RequestFragment")) {
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_1, new RequestFragment()).commit();
-                    }
-                    break;
             case R.id.nav_cart:
                     if (!getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container).getClass().getSimpleName().equals("CartFragment")) {
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_1, new CartFragment()).commit();
