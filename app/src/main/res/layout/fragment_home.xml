@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_grey"
-    tools:context=".fragments.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.HomeFragment"
+    android:background="@color/dark_grey">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/home_appbar"
@@ -14,46 +15,54 @@
         android:background="@color/app_bar_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/home_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:title="Home"
+            app:titleTextColor="@color/white"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/buy_card"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="300dp"
         android:backgroundTint="@color/teal_700"
         app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_appbar" >
+        app:layout_constraintTop_toBottomOf="@+id/home_appbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="128dp"
-                android:layout_height="104dp"
+                android:id="@+id/imageView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/ic_buy"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.043" />
+                app:tint="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Buy"
-                android:textSize="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView2"
-                app:layout_constraintVertical_bias="0.962">
-
-            </TextView>
+                android:layout_marginTop="15dp"
+                android:text="BUY"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -63,16 +72,12 @@
         android:id="@+id/sell_card"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="@color/teal_700"
         app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/get_donation_card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/buy_card"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.991">
+        app:layout_constraintTop_toBottomOf="@+id/home_appbar">
 
     </androidx.cardview.widget.CardView>
 
@@ -80,13 +85,12 @@
         android:id="@+id/donate_card"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/teal_700"
         app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/get_donation_card"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buy_card">
 
     </androidx.cardview.widget.CardView>
 
@@ -94,25 +98,23 @@
         android:id="@+id/get_donation_card"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="@color/teal_700"
         app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sell_card">
 
     </androidx.cardview.widget.CardView>
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/homeimage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/home_appbar"
-        app:layout_constraintVertical_bias="0.0" />
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="433dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/homeiconpng"
+        app:layout_constraintBottom_toTopOf="@+id/buy_card"
+        app:layout_constraintTop_toBottomOf="@+id/home_appbar"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
