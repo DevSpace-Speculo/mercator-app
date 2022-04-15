@@ -8,9 +8,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.text.InputType;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -18,7 +23,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.speculo.mercator.R;
@@ -28,8 +32,11 @@ import java.util.HashMap;
 public class AccountFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
 
-    private ImageButton nameBtn, numberBtn;
+    private NavController navController;
+
+    private ImageButton nameBtn, numberBtn, logout_btn;
     private TextView nameText, emailText, numberText;
     private SharedPreferences preferences;
 
@@ -49,12 +56,16 @@ public class AccountFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         nameBtn = view.findViewById(R.id.edit_name_icon);
         numberBtn = view.findViewById(R.id.edit_number_icon);
         nameText = view.findViewById(R.id.profile_name);
         numberText = view.findViewById(R.id.tv_number);
         emailText = view.findViewById(R.id.tv_email);
+        logout_btn = view.findViewById(R.id.logout_btn);
+
+        navController = Navigation.findNavController(view);
 
         preferences = requireActivity().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
@@ -116,6 +127,11 @@ public class AccountFragment extends Fragment {
             });
             nameDialog.setNegativeButton("Cancel", (dialogInterface, i) -> {});
             nameDialog.show();
+        });
+
+        logout_btn.setOnClickListener(view12 -> {
+            firebaseAuth.signOut();
+            navController.navigate(R.id.action_mainFragment_to_loginFragment);
         });
     }
 }
