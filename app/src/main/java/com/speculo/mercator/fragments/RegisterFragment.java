@@ -1,5 +1,7 @@
-package com.speculo.mercator;
+package com.speculo.mercator.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -33,6 +35,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.speculo.mercator.R;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,6 +55,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
     // initialize NavController
     private NavController navController;
+
+    private SharedPreferences sharedPreferences;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -86,6 +91,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         login_now_btn = view.findViewById(R.id.login_now_btn);
         login_now_btn.setOnClickListener(this);
         progressBar = view.findViewById(R.id.register_progressBar);
+
+        sharedPreferences = getActivity().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
         Window window = getActivity().getWindow();
 
@@ -180,7 +187,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         if(currentUser == null) {
             registerUser();
         } else {
-            navController.navigate(R.id.action_registerFragment_to_homeFragment);
+            navController.navigate(R.id.action_registerFragment_to_mainFragment);
         }
     }
 
@@ -218,8 +225,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
 
                         firebaseFirestore.collection("users").document(user_email).set(new_user);
 
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("name", name);
+                        editor.putString("phone_number", number);
+                        editor.putString("email", user_email);
+                        editor.apply();
+
                         progressBar.setVisibility(View.INVISIBLE);
-                        navController.navigate(R.id.action_registerFragment_to_homeFragment);
+                        navController.navigate(R.id.action_registerFragment_to_mainFragment);
                         register_btn.setEnabled(true);
                     } else {
                         feedbackText.setText(task.getException().toString());

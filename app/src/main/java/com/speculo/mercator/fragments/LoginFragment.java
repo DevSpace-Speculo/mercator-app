@@ -1,15 +1,8 @@
-package com.speculo.mercator;
+package com.speculo.mercator.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -22,17 +15,27 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseTooManyRequestsException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.speculo.mercator.R;
+import com.speculo.mercator.ResetPassDialog;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
@@ -50,6 +53,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     // initialize NavController
     private NavController navController;
+
+    private SharedPreferences sharedPreferences;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -72,9 +77,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         navController = Navigation.findNavController(view);
 
         feedbackText = view.findViewById(R.id.start_feedback_text);
-        logEmail = view.findViewById(R.id.quizNameInputField);
+        logEmail = view.findViewById(R.id.emailInputField);
         logPassword = view.findViewById(R.id.logPasswordInputField);
-        logEmailLayout = view.findViewById(R.id.quizName);
+        logEmailLayout = view.findViewById(R.id.email);
         logPasswordLayout = view.findViewById(R.id.logPasswordInputLayout);
         login_btn = view.findViewById(R.id.login_Button);
         register_now_btn = view.findViewById(R.id.register_now_btn);
@@ -84,6 +89,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
         progressBar = view.findViewById(R.id.start_progressBar);
         constraintLayout = view.findViewById(R.id.login_root_layout);
+
+        sharedPreferences = getActivity().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
         Window window = getActivity().getWindow();
 
@@ -146,7 +153,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         if(currentUser == null) {
             loginUser();
         } else {
-            navController.navigate(R.id.action_loginFragment_to_homeFragment);
+            navController.navigate(R.id.action_loginFragment_to_mainFragment);
         }
     }
 
@@ -168,7 +175,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 register_now_btn.setEnabled(false);
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                     if(task.isSuccessful()) {
-                        navController.navigate(R.id.action_loginFragment_to_homeFragment);
+                        DocumentReference docRef = firebaseFirestore.collection("users").document(email);
+                        docRef.get().addOnSuccessListener(documentSnapshot -> {
+                            if(documentSnapshot.exists()){
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("name", documentSnapshot.getString("name"));
+                                editor.putString("phone_number", documentSnapshot.getString("phone_number"));
+                                editor.putString("email", documentSnapshot.getString("email"));
+                                editor.apply();
+                            }
+                        });
+                        navController.navigate(R.id.action_loginFragment_to_mainFragment);
                     } else {
                         progressBar.setVisibility(View.INVISIBLE);
                         login_btn.setEnabled(true);
