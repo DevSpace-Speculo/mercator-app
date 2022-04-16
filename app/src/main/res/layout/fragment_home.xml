@@ -31,7 +31,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="300dp"
         android:backgroundTint="@color/teal_700"
         app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,14 +55,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="BUY"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                android:layout_marginTop="15dp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -72,7 +72,7 @@
         android:id="@+id/sell_card"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/teal_700"
         app:cardCornerRadius="10dp"
@@ -85,8 +85,8 @@
         android:id="@+id/donate_card"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/teal_700"
         app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
         android:id="@+id/get_donation_card"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/teal_700"
         app:cardCornerRadius="10dp"
@@ -106,5 +106,15 @@
         app:layout_constraintTop_toBottomOf="@+id/sell_card">
 
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="433dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/homeiconpng"
+        app:layout_constraintBottom_toTopOf="@+id/buy_card"
+        app:layout_constraintTop_toBottomOf="@+id/home_appbar"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
