@@ -75,6 +75,15 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_sellFragment"
+            app:destination="@id/sellFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/buyFragment"
@@ -94,4 +103,9 @@
         android:name="com.speculo.mercator.fragments.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/sellFragment"
+        android:name="com.speculo.mercator.fragments.SellFragment"
+        android:label="fragment_sell"
+        tools:layout="@layout/fragment_sell" />
 </navigation>

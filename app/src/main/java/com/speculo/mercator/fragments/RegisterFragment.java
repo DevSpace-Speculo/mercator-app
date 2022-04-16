@@ -72,14 +72,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         navController = Navigation.findNavController(view);
 
         feedbackText = view.findViewById(R.id.registration_feedback_text);
-        regName = view.findViewById(R.id.regNameInputField);
-        regEmail = view.findViewById(R.id.regEmailInputField);
+        regName = view.findViewById(R.id.sell_name_input_field);
+        regEmail = view.findViewById(R.id.sell_desc_input_field);
         regPassword = view.findViewById(R.id.regPassInputField);
-        regNumber = view.findViewById(R.id.regNumInputField);
-        regNameLayout = view.findViewById(R.id.regNameInputLayout);
-        regEmailLayout = view.findViewById(R.id.regEmailInputLayout);
+        regNumber = view.findViewById(R.id.sell_price_input_field);
+        regNameLayout = view.findViewById(R.id.sell_name_input_layout);
+        regEmailLayout = view.findViewById(R.id.sell_desc_input_layout);
         regPasswordLayout = view.findViewById(R.id.regPassInputLayout);
-        regNumberLayout = view.findViewById(R.id.regNumInputLayout);
+        regNumberLayout = view.findViewById(R.id.sell_price_input_layout);
         register_btn = view.findViewById(R.id.register_button);
         login_now_btn = view.findViewById(R.id.login_now_btn);
         login_now_btn.setOnClickListener(this);

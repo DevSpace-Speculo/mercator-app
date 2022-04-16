@@ -22,7 +22,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private CardView buy_card;
+    private CardView buy_card, sell_card;
     private NavController navController;
 
     public HomeFragment() {
@@ -41,8 +41,10 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         buy_card = view.findViewById(R.id.buy_card);
+        sell_card = view.findViewById(R.id.sell_card);
         navController = Navigation.findNavController(view);
 
         buy_card.setOnClickListener(view1 -> navController.navigate(R.id.action_mainFragment_to_buyFragment));
+        sell_card.setOnClickListener(view2 -> navController.navigate(R.id.action_mainFragment_to_sellFragment));
     }
 }

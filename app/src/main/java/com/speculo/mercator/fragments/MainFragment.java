@@ -57,7 +57,8 @@ public class MainFragment extends Fragment {
 
         bottomNavigationView = view.findViewById(R.id.bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_1, new HomeFragment()).commit();
+
+//        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_1, new HomeFragment()).commit();
 
         Window window = getActivity().getWindow();
 
@@ -69,5 +70,11 @@ public class MainFragment extends Fragment {
 
         // finally change the color
         window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.app_bar_bg));
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_1, new HomeFragment()).commit();
     }
 }

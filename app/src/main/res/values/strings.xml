@@ -6,6 +6,9 @@
     <string name="empty_password_error">Password cannot be empty</string>
     <string name="empty_num_error">phone number cannot be empty</string>
     <string name="preference_file_key">myPreferences</string>
+
+    <string name="empty_price_error">Price cannot be empty</string>
+    <string name="empty_desc_error">Description cannot be empty</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
