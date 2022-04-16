@@ -84,6 +84,20 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_mainFragment_to_getDonationsFragment"
+            app:destination="@id/getDonationsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_donateFragment"
+            app:destination="@id/donateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/buyFragment"
@@ -108,4 +122,14 @@
         android:name="com.speculo.mercator.fragments.SellFragment"
         android:label="fragment_sell"
         tools:layout="@layout/fragment_sell" />
+    <fragment
+        android:id="@+id/getDonationsFragment"
+        android:name="com.speculo.mercator.fragments.GetDonationsFragment"
+        android:label="fragment_get_donations"
+        tools:layout="@layout/fragment_get_donations" />
+    <fragment
+        android:id="@+id/donateFragment"
+        android:name="com.speculo.mercator.fragments.DonateFragment"
+        android:label="fragment_donate"
+        tools:layout="@layout/fragment_donate" />
 </navigation>

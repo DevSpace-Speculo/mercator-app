@@ -6,12 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SellFragment"
+    tools:context=".fragments.DonateFragment"
     android:background="@color/dark_grey"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/sell_appbar"
+        android:id="@+id/donate_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/app_bar_bg"
@@ -20,16 +20,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/sell_toolbar"
+            android:id="@+id/donate_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:title="Sell"
+            app:title="Donate"
             app:titleTextColor="@color/white"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/sell_name_input_layout"
+        android:id="@+id/donate_name_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,12 +45,12 @@
         app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sell_appbar"
+        app:layout_constraintTop_toBottomOf="@+id/donate_appbar"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded"
         app:startIconTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/sell_name_input_field"
+            android:id="@+id/donate_name_input_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -58,7 +58,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/sell_desc_input_layout"
+        android:id="@+id/donate_desc_input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,59 +74,29 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sell_name_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/donate_name_input_layout"
         app:startIconTint="@color/white"
         android:hint="Product Description">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/sell_desc_input_field"
+            android:id="@+id/donate_desc_input_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/sell_price_input_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:endIconTint="@color/white"
-        app:endIconMode="clear_text"
-        app:hintTextColor="@color/white"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sell_desc_input_layout"
-        app:startIconTint="@color/white"
-        android:hint="Price">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/sell_price_input_field"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textColor="@color/white" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <Button
-        android:id="@+id/sell_add_image"
+        android:id="@+id/donate_add_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="upload image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sell_price_input_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/donate_desc_input_layout" />
 
     <Button
-        android:id="@+id/sell_submit_button"
+        android:id="@+id/donate_submit_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -137,10 +107,10 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sell_add_image" />
+        app:layout_constraintTop_toBottomOf="@+id/donate_add_image" />
 
     <ProgressBar
-        android:id="@+id/sell_progressBar"
+        android:id="@+id/donate_progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -148,8 +118,8 @@
         android:indeterminate="true"
         android:indeterminateTint="@color/accent_blue"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/sell_submit_button"
-        app:layout_constraintEnd_toEndOf="@+id/sell_submit_button"
-        app:layout_constraintTop_toTopOf="@+id/sell_submit_button" />
+        app:layout_constraintBottom_toBottomOf="@+id/donate_submit_button"
+        app:layout_constraintEnd_toEndOf="@+id/donate_submit_button"
+        app:layout_constraintTop_toTopOf="@+id/donate_submit_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

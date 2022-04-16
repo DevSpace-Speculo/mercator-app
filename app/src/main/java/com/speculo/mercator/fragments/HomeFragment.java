@@ -22,7 +22,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private CardView buy_card, sell_card;
+    private CardView buy_card, sell_card, donations_card, donate_card;
     private NavController navController;
 
     public HomeFragment() {
@@ -42,9 +42,13 @@ public class HomeFragment extends Fragment {
 
         buy_card = view.findViewById(R.id.buy_card);
         sell_card = view.findViewById(R.id.sell_card);
+        donations_card = view.findViewById(R.id.get_donation_card);
+        donate_card = view.findViewById(R.id.donate_card);
         navController = Navigation.findNavController(view);
 
         buy_card.setOnClickListener(view1 -> navController.navigate(R.id.action_mainFragment_to_buyFragment));
         sell_card.setOnClickListener(view2 -> navController.navigate(R.id.action_mainFragment_to_sellFragment));
+        donations_card.setOnClickListener(view3 -> navController.navigate(R.id.action_mainFragment_to_getDonationsFragment));
+        donate_card.setOnClickListener(view4 -> navController.navigate(R.id.action_mainFragment_to_donateFragment));
     }
 }

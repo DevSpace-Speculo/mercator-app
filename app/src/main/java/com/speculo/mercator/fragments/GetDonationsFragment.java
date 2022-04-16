@@ -1,9 +1,6 @@
 package com.speculo.mercator.fragments;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,23 +8,29 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.speculo.mercator.R;
 import com.speculo.mercator.adapters.CartAdapter;
+import com.speculo.mercator.adapters.DonationAdapter;
+import com.speculo.mercator.models.DonationModel;
 import com.speculo.mercator.models.ItemsModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuyFragment extends Fragment {
+public class GetDonationsFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private FirebaseFirestore firebaseFirestore;
-    private List<ItemsModel> buyItems;
-    private CartAdapter adapter;
+    private List<DonationModel> buyItems;
+    private DonationAdapter adapter;
 
-    public BuyFragment() {
+    public GetDonationsFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +38,7 @@ public class BuyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_buy, container, false);
+        return inflater.inflate(R.layout.fragment_get_donations, container, false);
     }
 
     @Override
@@ -43,16 +46,16 @@ public class BuyFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        recyclerView = view.findViewById(R.id.buy_recView);
+        recyclerView = view.findViewById(R.id.donations_recView);
         buyItems = new ArrayList<>();
-        adapter = new CartAdapter(buyItems, getContext());
+        adapter = new DonationAdapter(buyItems, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        firebaseFirestore.collection("items").get().addOnSuccessListener(queryDocumentSnapshots -> {
+        firebaseFirestore.collection("donations").get().addOnSuccessListener(queryDocumentSnapshots -> {
             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
             for(DocumentSnapshot d : list){
-                ItemsModel obj = d.toObject(ItemsModel.class);
+                DonationModel obj = d.toObject(DonationModel.class);
                 buyItems.add(obj);
             }
             adapter.notifyDataSetChanged();
