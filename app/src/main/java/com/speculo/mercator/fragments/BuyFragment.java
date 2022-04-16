@@ -45,7 +45,7 @@ public class BuyFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
         recyclerView = view.findViewById(R.id.buy_recView);
         buyItems = new ArrayList<>();
-        adapter = new CartAdapter(buyItems, getContext());
+        adapter = new CartAdapter(buyItems, requireActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 

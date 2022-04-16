@@ -48,7 +48,7 @@ public class GetDonationsFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
         recyclerView = view.findViewById(R.id.donations_recView);
         buyItems = new ArrayList<>();
-        adapter = new DonationAdapter(buyItems, getContext());
+        adapter = new DonationAdapter(buyItems, requireActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 

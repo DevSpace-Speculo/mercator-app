@@ -1,6 +1,7 @@
 package com.speculo.mercator.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.speculo.mercator.DetailsActivity;
 import com.speculo.mercator.R;
 import com.speculo.mercator.models.DonationModel;
 
@@ -65,6 +67,17 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationAdapter.ViewHo
             desc = itemView.findViewById(R.id.product_desc);
             imageView = itemView.findViewById(R.id.product_image);
             view_btn = itemView.findViewById(R.id.view_btn);
+
+            view_btn.setOnClickListener(view -> {
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("product_name", itemsModelList.get(getAdapterPosition()).getProduct_name());
+                intent.putExtra("product_image", itemsModelList.get(getAdapterPosition()).getProduct_image());
+                intent.putExtra("product_desc", itemsModelList.get(getAdapterPosition()).getProduct_description());
+                intent.putExtra("seller_name", itemsModelList.get(getAdapterPosition()).getSeller_name());
+                intent.putExtra("seller_email", itemsModelList.get(getAdapterPosition()).getSeller_email());
+                intent.putExtra("seller_number", itemsModelList.get(getAdapterPosition()).getSeller_number());
+                context.startActivity(intent);
+            });
         }
     }
 }

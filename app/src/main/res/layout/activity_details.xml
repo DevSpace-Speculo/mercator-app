@@ -8,7 +8,7 @@
     android:background="@color/dark_grey">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+        android:id="@+id/details_app_bar"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:theme="@style/Theme.MyApplication.AppBarOverlay">
@@ -35,7 +35,7 @@
                 app:srcCompat="@drawable/placeholder_image" />
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/details_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
