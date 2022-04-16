@@ -4,16 +4,26 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.speculo.mercator.R;
+import com.speculo.mercator.models.ItemsModel;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment {
+
+    private CardView buy_card;
+    private NavController navController;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -29,6 +39,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.d("TAG", getClass().getSimpleName());
+
+        buy_card = view.findViewById(R.id.buy_card);
+        navController = Navigation.findNavController(view);
+
+        buy_card.setOnClickListener(view1 -> navController.navigate(R.id.action_mainFragment_to_buyFragment));
     }
 }

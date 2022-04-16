@@ -1,8 +1,10 @@
 package com.speculo.mercator.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,9 +20,11 @@ import java.util.List;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     private List<ItemsModel> itemsModelList;
+    private Context context;
 
-    public CartAdapter(List<ItemsModel> itemsModelList) {
+    public CartAdapter(List<ItemsModel> itemsModelList, Context context) {
         this.itemsModelList = itemsModelList;
+        this.context = context;
     }
 
     @NonNull
@@ -51,6 +55,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView name, price, desc;
         private ImageView imageView;
+        private Button view_btn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +64,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             price = itemView.findViewById(R.id.product_price);
             desc = itemView.findViewById(R.id.product_desc);
             imageView = itemView.findViewById(R.id.product_image);
+            view_btn = itemView.findViewById(R.id.view_btn);
         }
     }
 }

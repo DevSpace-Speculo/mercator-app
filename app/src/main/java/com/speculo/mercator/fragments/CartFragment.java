@@ -59,7 +59,7 @@ public class CartFragment extends Fragment {
         recyclerView = view.findViewById(R.id.cart_recView);
         sharedPreferences = getActivity().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         cartItems = new ArrayList<>();
-        adapter = new CartAdapter(cartItems);
+        adapter = new CartAdapter(cartItems, requireActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
